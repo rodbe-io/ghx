@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/rodbe-io/ghx/compare/v1.0.0...v1.1.0) (2025-02-12)
+
+
+### Features
+
+* add readme + remove console ([13707db](https://github.com/rodbe-io/ghx/commit/13707dbea9619d2490ff74fc3f6aa9d5cb8d814c))
+
 ## 1.0.0 (2025-02-12)
 
 
