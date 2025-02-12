@@ -3,6 +3,7 @@ import { env } from 'node:process';
 import { execSync } from 'node:child_process';
 
 import checkbox from '@inquirer/checkbox';
+import input from '@inquirer/input';
 import select from '@inquirer/select';
 import { getAllReposByOrg, getOrgs } from '@rodbe/github-api';
 import { checkUpdates } from '@rodbe/check-updates';
@@ -18,6 +19,7 @@ export const init = async () => {
 
   const { checkNewVersion } = checkUpdates({
     askToUpdate: true,
+    debug: true,
     dontAskCheckInterval: DAY_IN_MS,
     packageJsonPath: getPkgJsonPath(),
     updateCheckInterval: WEEK_IN_MS,
@@ -43,7 +45,7 @@ export const init = async () => {
 
   const selectedOrgs = await checkbox({
     choices: orgs,
-    message: 'Select the orgs to clone:\n',
+    message: 'Select the ORGS to clone:\n',
     pageSize: 15,
   });
 
@@ -63,10 +65,21 @@ export const init = async () => {
       org,
       token: githubToken,
     });
+    let filteredRepos: typeof repos = [];
+
+    const matchBy = await input({
+      message: `ORG "${org}": Filter repos that contain the following text (empty means it will show all repos):\n`,
+    });
+
+    if (matchBy) {
+      const regex = new RegExp(matchBy, 'i');
+
+      filteredRepos = repos.filter(repo => regex.test(repo.name));
+    }
 
     const selectedRepos = await checkbox({
-      choices: repos,
-      message: `Select the repos to clone from "${org}":\n`,
+      choices: filteredRepos.length ? filteredRepos : repos,
+      message: `Select the REPOS to clone from "${org}":\n`,
       pageSize: 15,
     });
 

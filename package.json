@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@inquirer/checkbox": "^4.1.1",
+    "@inquirer/input": "^4.1.5",
     "@inquirer/select": "^4.0.8",
     "@rodbe/check-updates": "^1.3.0",
     "@rodbe/fn-utils": "^1.5.0",
