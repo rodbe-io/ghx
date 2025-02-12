@@ -16,7 +16,6 @@ initEvents();
 export const init = async () => {
   const githubToken = env.GHX_GITHUB_PAT;
 
-  console.log(100, getPkgJsonPath());
   const { checkNewVersion } = checkUpdates({
     askToUpdate: true,
     dontAskCheckInterval: DAY_IN_MS,
