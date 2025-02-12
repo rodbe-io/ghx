@@ -19,7 +19,6 @@ export const init = async () => {
 
   const { checkNewVersion } = checkUpdates({
     askToUpdate: true,
-    debug: true,
     dontAskCheckInterval: DAY_IN_MS,
     packageJsonPath: getPkgJsonPath(),
     updateCheckInterval: WEEK_IN_MS,
