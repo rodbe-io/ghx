@@ -79,7 +79,7 @@ const eslintConfig = tsEslint.config(
           },
         },
       ],
-      'no-unused-vars': 'warn',
+      'no-unused-vars': 'off',
       'sort-imports': [
         'error',
         {
