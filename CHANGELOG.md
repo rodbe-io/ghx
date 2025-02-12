@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/rodbe-io/ghx/compare/v1.2.0...v1.2.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* remove debug param ([dfac21f](https://github.com/rodbe-io/ghx/commit/dfac21fd6ff746444185fbdc13ccb7771a026e93))
+
 ## [1.2.0](https://github.com/rodbe-io/ghx/compare/v1.1.0...v1.2.0) (2025-02-12)
 
 
