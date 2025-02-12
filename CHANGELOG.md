@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/rodbe-io/ghx/compare/v1.1.0...v1.2.0) (2025-02-12)
+
+
+### Features
+
+* filter repos by regex ([46daa42](https://github.com/rodbe-io/ghx/commit/46daa42dd934c6262e9d99f66aadfd95e797eced))
+
 ## [1.1.0](https://github.com/rodbe-io/ghx/compare/v1.0.0...v1.1.0) (2025-02-12)
 
 
