@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/rodbe-io/ghx/compare/v1.2.1...v1.3.0) (2025-02-14)
+
+
+### Features
+
+* add select2 to list org and repos ([a34cc85](https://github.com/rodbe-io/ghx/commit/a34cc85db76b18b8d1ea05920a8797a1795f4f00))
+
 ## [1.2.1](https://github.com/rodbe-io/ghx/compare/v1.2.0...v1.2.1) (2025-02-12)
 
 
