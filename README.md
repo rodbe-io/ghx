@@ -14,7 +14,7 @@ The GHX command line tool **allows** users to **easily clone repositories from m
 ## Prerequisites
 
 - `Node.js 18.18.2 or higher` installed on your system.
-- Set up a GitHub personal access token as an environment variable `GHX_GITHUB_PAT`.
+- Set up a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) as an environment variable `GHX_GITHUB_PAT`.
 
 ## Installation
 

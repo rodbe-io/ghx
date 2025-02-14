@@ -6,11 +6,11 @@ import select from '@inquirer/select';
 import { select as multiSelect2 } from 'inquirer-select-pro';
 import { getAllReposByOrg, getOrgs } from '@rodbe/github-api';
 import { checkUpdates } from '@rodbe/check-updates';
+import { fuzzySearch } from '@rodbe/fn-utils';
 
 import { initEvents } from '@/events';
 import { DAY_IN_MS, WEEK_IN_MS } from '@/constants';
 import { getPkgJsonPath } from '@/helpers/ghx';
-import { fuzzySearch } from '@rodbe/fn-utils';
 
 initEvents();
 
@@ -27,7 +27,12 @@ export const init = async () => {
   await checkNewVersion?.();
 
   if (!githubToken) {
-    console.error('The GHX_GITHUB_PAT env needs to be set in order to start');
+    console.error(
+      'The GHX_GITHUB_PAT env needs to be set in order to start.\nFollow the instructions to get your TOKEN:\n\n'
+    );
+    console.log(
+      `https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic`
+    );
     process.exit(1);
   }
 
