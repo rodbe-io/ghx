@@ -9,7 +9,7 @@ The GHX command line tool **allows** users to **easily clone repositories from m
 - Choose between `SSH` and `HTTPS` cloning methods.
 - Select multiple GitHub organizations.
 - Select multiple repositories from each organization to clone.
-- **Filter** repositories based on a **search term**.
+- Apply **fuzzy search** to select multiple organizations and repositories.
 
 ## Prerequisites
 

@@ -2,15 +2,15 @@
 import { env } from 'node:process';
 import { execSync } from 'node:child_process';
 
-import checkbox from '@inquirer/checkbox';
-import input from '@inquirer/input';
 import select from '@inquirer/select';
+import { select as multiSelect2 } from 'inquirer-select-pro';
 import { getAllReposByOrg, getOrgs } from '@rodbe/github-api';
 import { checkUpdates } from '@rodbe/check-updates';
 
 import { initEvents } from '@/events';
 import { DAY_IN_MS, WEEK_IN_MS } from '@/constants';
 import { getPkgJsonPath } from '@/helpers/ghx';
+import { fuzzySearch } from '@rodbe/fn-utils';
 
 initEvents();
 
@@ -19,6 +19,7 @@ export const init = async () => {
 
   const { checkNewVersion } = checkUpdates({
     askToUpdate: true,
+    debug: true,
     dontAskCheckInterval: DAY_IN_MS,
     packageJsonPath: getPkgJsonPath(),
     updateCheckInterval: WEEK_IN_MS,
@@ -42,10 +43,23 @@ export const init = async () => {
 
   const orgs = await getOrgs({ mapper: org => ({ name: org.login, value: org.login }), token: githubToken });
 
-  const selectedOrgs = await checkbox({
-    choices: orgs,
+  const selectedOrgs = await multiSelect2({
+    canToggleAll: true,
+    loop: true,
     message: 'Select the ORGS to clone:\n',
+    options: (input = '') => {
+      if (!input) {
+        return orgs;
+      }
+
+      return fuzzySearch({
+        items: orgs,
+        key: 'name',
+        searchText: input,
+      });
+    },
     pageSize: 15,
+    selectFocusedOnSubmit: true,
   });
 
   if (!selectedOrgs.length) {
@@ -57,29 +71,30 @@ export const init = async () => {
   for (const org of selectedOrgs) {
     const repos = await getAllReposByOrg({
       mapper: repo => ({
-        checked: true,
         name: repo.name,
         value: wayToClone === 'SSH' ? repo.ssh_url : repo.clone_url,
       }),
       org,
       token: githubToken,
     });
-    let filteredRepos: typeof repos = [];
 
-    const matchBy = await input({
-      message: `ORG "${org}": Filter repos that contain the following text (empty means it will show all repos):\n`,
-    });
-
-    if (matchBy) {
-      const regex = new RegExp(matchBy, 'i');
-
-      filteredRepos = repos.filter(repo => regex.test(repo.name));
-    }
-
-    const selectedRepos = await checkbox({
-      choices: filteredRepos.length ? filteredRepos : repos,
+    const selectedRepos = await multiSelect2({
+      canToggleAll: true,
+      loop: true,
       message: `Select the REPOS to clone from "${org}":\n`,
+      options: (input = '') => {
+        if (!input) {
+          return repos;
+        }
+
+        return fuzzySearch({
+          items: repos,
+          key: 'name',
+          searchText: input,
+        });
+      },
       pageSize: 15,
+      selectFocusedOnSubmit: true,
     });
 
     allRepoToClone.push(...selectedRepos);
