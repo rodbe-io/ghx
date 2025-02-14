@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/rodbe-io/ghx/compare/v1.3.1...v1.4.0) (2025-02-14)
+
+
+### Features
+
+* add instructions for get TOKEN ([fb0e8e0](https://github.com/rodbe-io/ghx/commit/fb0e8e0c9e91997061bb356709150443617c797b))
+
 ## [1.3.1](https://github.com/rodbe-io/ghx/compare/v1.3.0...v1.3.1) (2025-02-14)
 
 
