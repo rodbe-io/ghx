@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/rodbe-io/ghx/compare/v1.3.0...v1.3.1) (2025-02-14)
+
+
+### Bug Fixes
+
+* remove debug param ([1ea594f](https://github.com/rodbe-io/ghx/commit/1ea594ff2264b63612864aaa44e440e364e0cbc4))
+
 ## [1.3.0](https://github.com/rodbe-io/ghx/compare/v1.2.1...v1.3.0) (2025-02-14)
 
 
