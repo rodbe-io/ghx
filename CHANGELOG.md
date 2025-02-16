@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/rodbe-io/ghx/compare/v1.4.0...v1.5.0) (2025-02-16)
+
+
+### Features
+
+* delete summary of selected items ([9ca9400](https://github.com/rodbe-io/ghx/commit/9ca94002607e3ef49dece3c0d0b9f4a5182c1565))
+
 ## [1.4.0](https://github.com/rodbe-io/ghx/compare/v1.3.1...v1.4.0) (2025-02-14)
 
 
