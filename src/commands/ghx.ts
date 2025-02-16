@@ -64,6 +64,11 @@ export const init = async () => {
     },
     pageSize: 15,
     selectFocusedOnSubmit: true,
+    theme: {
+      style: {
+        renderSelectedOptions: () => '',
+      },
+    },
   });
 
   if (!selectedOrgs.length) {
@@ -99,6 +104,11 @@ export const init = async () => {
       },
       pageSize: 15,
       selectFocusedOnSubmit: true,
+      theme: {
+        style: {
+          renderSelectedOptions: () => '',
+        },
+      },
     });
 
     allRepoToClone.push(...selectedRepos);
