@@ -17,7 +17,7 @@ export const getOrgsRepos = async ({ orgs, token, wayToClone }: GetOrgsReposProp
   const selectedOrgs = await select2({
     canToggleAll: true,
     loop: true,
-    message: 'Select the ORGS to clone:\n',
+    message: 'Select the ORGS to clone:',
     options: (input = '') => {
       if (!input) {
         return orgs;
@@ -52,7 +52,7 @@ export const getOrgsRepos = async ({ orgs, token, wayToClone }: GetOrgsReposProp
       canToggleAll: true,
       loop: true,
 
-      message: `Select the REPOS to clone from "${String(chalk.black.bold.bgGreenBright(org))}":\n`,
+      message: `Select the REPOS to clone from "${String(chalk.black.bold.bgGreenBright(org))}":`,
       options: (input = '') => {
         if (!input) {
           return repos;

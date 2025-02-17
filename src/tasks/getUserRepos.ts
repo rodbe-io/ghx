@@ -21,7 +21,7 @@ export const getUserRepos = async ({ token, wayToClone }: GetUserReposProps) => 
   const allReposToClone = await multiSelect2({
     canToggleAll: true,
     loop: true,
-    message: `Select the REPOS to clone:\n`,
+    message: `Select the REPOS to clone:`,
     options: (input = '') => {
       if (!input) {
         return userRepos;
