@@ -1,3 +1,10 @@
+## [1.6.0](https://github.com/rodbe-io/ghx/compare/v1.5.0...v1.6.0) (2025-02-17)
+
+
+### Features
+
+* add chalk to highlight the org ([dffad7e](https://github.com/rodbe-io/ghx/commit/dffad7edb996214e7a55aee1ec44a1bb52ab9535))
+
 ## [1.5.0](https://github.com/rodbe-io/ghx/compare/v1.4.0...v1.5.0) (2025-02-16)
 
 
