@@ -18,8 +18,8 @@ importers:
         specifier: ^1.5.0
         version: 1.5.0
       '@rodbe/github-api':
-        specifier: ^1.1.1
-        version: 1.1.1
+        specifier: ^2.0.0
+        version: 2.0.0
       inquirer-select-pro:
         specifier: 1.0.0-alpha.9
         version: 1.0.0-alpha.9
@@ -724,8 +724,8 @@ packages:
     resolution: {integrity: sha512-5GOJ6Al7VUHDd5HZySmBn9eltsp2rfCLXkr26DUTnaGCWh2YTE/WkjqKrUp0xtqmiD6Qp7D6PIt+ALnL/LtpQg==}
     engines: {node: '>= 18.18.2', npm: '>= 8.11.0', pnpm: '>= 9.15.2'}
 
-  '@rodbe/github-api@1.1.1':
-    resolution: {integrity: sha512-7cw1N/XxdnKoCS9BqcMwVQtGkWK2fC3tvmyhmSR5KwC62tLiga69XlRJ7pQE4OHWE29K7tOQa4ImcdqNvkroyA==}
+  '@rodbe/github-api@2.0.0':
+    resolution: {integrity: sha512-CG56uArlYG+jPRaV8iAseJLyuusn/YCUk4k4HFq9gt95KtJRAzKaeQcekinG984gbGV6aVJcF5eL6x2fGBzDRg==}
     engines: {node: '>= 18.18.2', npm: '>= 8.11.0', pnpm: '>= 9.15.2'}
 
   '@rodbe/lru-cache-fs@1.1.2':
@@ -3971,7 +3971,7 @@ snapshots:
 
   '@rodbe/fn-utils@1.5.0': {}
 
-  '@rodbe/github-api@1.1.1':
+  '@rodbe/github-api@2.0.0':
     dependencies:
       '@rodbe/fn-utils': 1.5.0
 

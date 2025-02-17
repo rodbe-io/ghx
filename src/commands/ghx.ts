@@ -4,13 +4,14 @@ import { execSync } from 'node:child_process';
 
 import select from '@inquirer/select';
 import { select as multiSelect2 } from 'inquirer-select-pro';
-import { getAllReposByOrg, getOrgs } from '@rodbe/github-api';
+import { getOrgs, getReposByUser } from '@rodbe/github-api';
 import { checkUpdates } from '@rodbe/check-updates';
 import { fuzzySearch } from '@rodbe/fn-utils';
 
 import { initEvents } from '@/events';
 import { DAY_IN_MS, WEEK_IN_MS } from '@/constants';
 import { getPkgJsonPath } from '@/helpers/ghx';
+import { getOrgsRepos } from '@/tasks/getOrgRepos';
 
 initEvents();
 
@@ -47,57 +48,26 @@ export const init = async () => {
 
   const orgs = await getOrgs({ mapper: org => ({ name: org.login, value: org.login }), token: githubToken });
 
-  const selectedOrgs = await multiSelect2({
-    canToggleAll: true,
-    loop: true,
-    message: 'Select the ORGS to clone:\n',
-    options: (input = '') => {
-      if (!input) {
-        return orgs;
-      }
-
-      return fuzzySearch({
-        items: orgs,
-        key: 'name',
-        searchText: input,
-      });
-    },
-    pageSize: 15,
-    selectFocusedOnSubmit: true,
-    theme: {
-      style: {
-        renderSelectedOptions: () => '',
-      },
-    },
-  });
-
-  if (!selectedOrgs.length) {
-    return;
-  }
-
-  const allRepoToClone: Array<string> = [];
-
-  for (const org of selectedOrgs) {
-    const repos = await getAllReposByOrg({
+  if (!orgs.length) {
+    const userRepos = await getReposByUser({
       mapper: repo => ({
         name: repo.name,
         value: wayToClone === 'SSH' ? repo.ssh_url : repo.clone_url,
       }),
-      org,
       token: githubToken,
     });
 
-    const selectedRepos = await multiSelect2({
+    const allReposToClone = await multiSelect2({
       canToggleAll: true,
       loop: true,
-      message: `Select the REPOS to clone from "${org}":\n`,
+      message: `Select the REPOS to clone from:\n`,
       options: (input = '') => {
         if (!input) {
-          return repos;
+          return userRepos;
         }
 
         return fuzzySearch({
-          items: repos,
+          items: userRepos,
           key: 'name',
           searchText: input,
         });
@@ -111,10 +81,16 @@ export const init = async () => {
       },
     });
 
-    allRepoToClone.push(...selectedRepos);
+    for (const repo of allReposToClone) {
+      execSync(`git clone ${repo}`, { stdio: 'inherit' });
+    }
+
+    return;
   }
 
-  for (const repo of allRepoToClone) {
+  const { allReposToClone } = await getOrgsRepos({ orgs, token: githubToken, wayToClone });
+
+  for (const repo of allReposToClone) {
     execSync(`git clone ${repo}`, { stdio: 'inherit' });
   }
 };
