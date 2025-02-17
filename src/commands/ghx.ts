@@ -3,15 +3,14 @@ import { env } from 'node:process';
 import { execSync } from 'node:child_process';
 
 import select from '@inquirer/select';
-import { select as multiSelect2 } from 'inquirer-select-pro';
-import { getOrgs, getReposByUser } from '@rodbe/github-api';
+import { getOrgs } from '@rodbe/github-api';
 import { checkUpdates } from '@rodbe/check-updates';
-import { fuzzySearch } from '@rodbe/fn-utils';
 
 import { initEvents } from '@/events';
 import { DAY_IN_MS, WEEK_IN_MS } from '@/constants';
 import { getPkgJsonPath } from '@/helpers/ghx';
 import { getOrgsRepos } from '@/tasks/getOrgRepos';
+import { getUserRepos } from '@/tasks/getUserRepos';
 
 initEvents();
 
@@ -49,37 +48,7 @@ export const init = async () => {
   const orgs = await getOrgs({ mapper: org => ({ name: org.login, value: org.login }), token: githubToken });
 
   if (!orgs.length) {
-    const userRepos = await getReposByUser({
-      mapper: repo => ({
-        name: repo.name,
-        value: wayToClone === 'SSH' ? repo.ssh_url : repo.clone_url,
-      }),
-      token: githubToken,
-    });
-
-    const allReposToClone = await multiSelect2({
-      canToggleAll: true,
-      loop: true,
-      message: `Select the REPOS to clone from:\n`,
-      options: (input = '') => {
-        if (!input) {
-          return userRepos;
-        }
-
-        return fuzzySearch({
-          items: userRepos,
-          key: 'name',
-          searchText: input,
-        });
-      },
-      pageSize: 15,
-      selectFocusedOnSubmit: true,
-      theme: {
-        style: {
-          renderSelectedOptions: () => '',
-        },
-      },
-    });
+    const { allReposToClone } = await getUserRepos({ token: githubToken, wayToClone });
 
     for (const repo of allReposToClone) {
       execSync(`git clone ${repo}`, { stdio: 'inherit' });
