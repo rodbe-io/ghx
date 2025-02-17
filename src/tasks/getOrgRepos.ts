@@ -49,7 +49,7 @@ export const getOrgsRepos = async ({ orgs, token, wayToClone }: GetOrgsReposProp
     const selectedRepos = await select2({
       canToggleAll: true,
       loop: true,
-
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       message: `Select the REPOS to clone from "${String(chalk.black.bold.bgGreenBright(org))}":\n`,
       options: (input = '') => {
         if (!input) {
