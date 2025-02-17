@@ -20,6 +20,9 @@ importers:
       '@rodbe/github-api':
         specifier: ^2.0.0
         version: 2.0.0
+      chalk:
+        specifier: ^5.4.1
+        version: 5.4.1
       inquirer-select-pro:
         specifier: 1.0.0-alpha.9
         version: 1.0.0-alpha.9

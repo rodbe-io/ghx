@@ -16,6 +16,7 @@
     "@rodbe/check-updates": "^1.3.0",
     "@rodbe/fn-utils": "^1.5.0",
     "@rodbe/github-api": "^2.0.0",
+    "chalk": "^5.4.1",
     "inquirer-select-pro": "1.0.0-alpha.9"
   },
   "description": "Clone GitHub repositories",

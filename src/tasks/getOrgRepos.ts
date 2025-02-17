@@ -1,6 +1,7 @@
-import { select as select2 } from 'inquirer-select-pro';
 import { fuzzySearch } from '@rodbe/fn-utils';
 import { getReposByOrg } from '@rodbe/github-api';
+import { select as select2 } from 'inquirer-select-pro';
+import chalk from 'chalk';
 
 interface GetOrgsReposProps {
   orgs: Array<{ name: string; value: string }>;
@@ -48,7 +49,8 @@ export const getOrgsRepos = async ({ orgs, token, wayToClone }: GetOrgsReposProp
     const selectedRepos = await select2({
       canToggleAll: true,
       loop: true,
-      message: `Select the REPOS to clone from "${org}":\n`,
+
+      message: `Select the REPOS to clone from "${String(chalk.black.bold.bgGreenBright(org))}":\n`,
       options: (input = '') => {
         if (!input) {
           return repos;
