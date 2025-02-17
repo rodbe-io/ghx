@@ -11,6 +11,7 @@ import { DAY_IN_MS, WEEK_IN_MS } from '@/constants';
 import { getPkgJsonPath } from '@/helpers/ghx';
 import { getOrgsRepos } from '@/tasks/getOrgRepos';
 import { getUserRepos } from '@/tasks/getUserRepos';
+import type { WAY_TO_CLONE } from '@/types';
 
 initEvents();
 
@@ -36,7 +37,7 @@ export const init = async () => {
     process.exit(1);
   }
 
-  const wayToClone = await select({
+  const wayToClone = await select<WAY_TO_CLONE>({
     choices: [
       { name: 'SSH', value: 'SSH' },
       { name: 'HTTPS', value: 'HTTPS' },

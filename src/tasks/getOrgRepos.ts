@@ -1,12 +1,14 @@
+import chalk from 'chalk';
 import { fuzzySearch } from '@rodbe/fn-utils';
 import { getReposByOrg } from '@rodbe/github-api';
 import { select as select2 } from 'inquirer-select-pro';
-import chalk from 'chalk';
+
+import type { WAY_TO_CLONE } from '@/types';
 
 interface GetOrgsReposProps {
   orgs: Array<{ name: string; value: string }>;
   token: string;
-  wayToClone: string;
+  wayToClone: WAY_TO_CLONE;
 }
 
 export const getOrgsRepos = async ({ orgs, token, wayToClone }: GetOrgsReposProps) => {
@@ -49,7 +51,7 @@ export const getOrgsRepos = async ({ orgs, token, wayToClone }: GetOrgsReposProp
     const selectedRepos = await select2({
       canToggleAll: true,
       loop: true,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+
       message: `Select the REPOS to clone from "${String(chalk.black.bold.bgGreenBright(org))}":\n`,
       options: (input = '') => {
         if (!input) {

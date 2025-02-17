@@ -2,10 +2,11 @@ import { select as multiSelect2 } from 'inquirer-select-pro';
 
 import { fuzzySearch } from '@rodbe/fn-utils';
 import { getReposByUser } from '@rodbe/github-api';
+import type { WAY_TO_CLONE } from '@/types';
 
 interface GetUserReposProps {
   token: string;
-  wayToClone: string;
+  wayToClone: WAY_TO_CLONE;
 }
 
 export const getUserRepos = async ({ token, wayToClone }: GetUserReposProps) => {
