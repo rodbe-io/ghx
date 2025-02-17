@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/rodbe-io/ghx/compare/v1.6.0...v1.7.0) (2025-02-17)
+
+
+### Features
+
+* enable option to clone from orgs or personal account ([38c8bfa](https://github.com/rodbe-io/ghx/commit/38c8bfab4952cd8bed2d6aee103f6c2b63bc4a62))
+
 ## [1.6.0](https://github.com/rodbe-io/ghx/compare/v1.5.0...v1.6.0) (2025-02-17)
 
 
