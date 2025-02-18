@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/rodbe-io/ghx/compare/v1.7.0...v1.8.0) (2025-02-18)
+
+
+### Features
+
+* enable option to clone from starred repos ([f9a0da8](https://github.com/rodbe-io/ghx/commit/f9a0da8911e00323f260fce2a82ce1311426f3fa))
+
 ## [1.7.0](https://github.com/rodbe-io/ghx/compare/v1.6.0...v1.7.0) (2025-02-17)
 
 
