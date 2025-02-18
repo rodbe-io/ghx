@@ -1,22 +1,24 @@
-# GHX Command Line Tool
+# GHX 🐙: CLI with a user-friendly interface to clone GitHub repositories ⚡️
 
 ## Overview
 
-The GHX command line tool **allows** users to **easily clone repositories from multiple GitHub organizations**. It's designed with a **user-friendly interface**, prompting users to select their desired organizations and repositories for cloning.
+The GHX is a CLI that **allows** users to **easily clone your repositories**. It's designed with a **user-friendly interface**, prompting users to select the method (SSH/HTTPS) and the source (personal account, organizations, or starred)
 
 ## Features
 
 - Choose between `SSH` and `HTTPS` cloning methods.
+- Choose where to clone your repos: personal account, organizations, or starred.
 - Select multiple GitHub organizations.
 - Select multiple repositories from each organization to clone.
-- Apply **fuzzy search** to select multiple organizations and repositories.
+- Apply **fuzzy search** to your selections.
 
 ## Prerequisites
 
 - `Node.js 18.18.2 or higher` installed on your system.
 - Set up a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) as an environment variable `GHX_GITHUB_PAT`.
+- Configure your [ssh](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for [GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account)
 
-> Set read permissions to repos and orgs
+> Set read permissions to repos and orgs, for you token
 
 ## Installation
 
@@ -49,6 +51,7 @@ npm i -g @rodbe/ghx
 3. **Follow the prompts:**
 
   - Choose your preferred cloning method (SSH or HTTPS).
+  - Choose where to clone your repositories from (personal account, organizations, or starred).
   - Select the organizations you wish to clone repositories from.
   - Choose the specific repositories within each organization to clone.
 

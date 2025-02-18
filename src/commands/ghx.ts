@@ -11,6 +11,7 @@ import { DAY_IN_MS, WEEK_IN_MS } from '@/constants';
 import { getPkgJsonPath } from '@/helpers/ghx';
 import { getOrgsRepos } from '@/tasks/getOrgRepos';
 import { getUserRepos } from '@/tasks/getUserRepos';
+import { getStarredRepos } from '@/tasks/getStarredRepos';
 import type { CLONE_FROM, WAY_TO_CLONE } from '@/types';
 
 initEvents();
@@ -60,8 +61,9 @@ export const init = async () => {
 
   const cloneFrom = await select<CLONE_FROM>({
     choices: [
-      { name: 'Personal account', value: 'PERSONAL' },
+      { name: 'My Personal repos', value: 'PERSONAL' },
       { name: 'My Orgs', value: 'ORG' },
+      { name: 'My Starred repos', value: 'STARRED' },
     ],
     default: 'PERSONAL',
     message: 'Clone from?',
@@ -69,6 +71,16 @@ export const init = async () => {
 
   if (cloneFrom === 'PERSONAL') {
     const { allReposToClone } = await getUserRepos({ token: githubToken, wayToClone });
+
+    for (const repo of allReposToClone) {
+      execSync(`git clone ${repo}`, { stdio: 'inherit' });
+    }
+
+    return;
+  }
+
+  if (cloneFrom === 'STARRED') {
+    const { allReposToClone } = await getStarredRepos({ token: githubToken, wayToClone });
 
     for (const repo of allReposToClone) {
       execSync(`git clone ${repo}`, { stdio: 'inherit' });
