@@ -5,6 +5,7 @@ import { execSync } from 'node:child_process';
 import select from '@inquirer/select';
 import { getOrgs } from '@rodbe/github-api';
 import { checkUpdates } from '@rodbe/check-updates';
+import { tryCatch } from '@rodbe/fn-utils';
 
 import { initEvents } from '@/events';
 import { DAY_IN_MS, WEEK_IN_MS } from '@/constants';
@@ -53,7 +54,7 @@ export const init = async () => {
     const { allReposToClone } = await getUserRepos({ token: githubToken, wayToClone });
 
     for (const repo of allReposToClone) {
-      execSync(`git clone ${repo}`, { stdio: 'inherit' });
+      tryCatch(() => execSync(`git clone ${repo}`, { stdio: 'inherit' }));
     }
 
     return;
@@ -73,7 +74,7 @@ export const init = async () => {
     const { allReposToClone } = await getUserRepos({ token: githubToken, wayToClone });
 
     for (const repo of allReposToClone) {
-      execSync(`git clone ${repo}`, { stdio: 'inherit' });
+      tryCatch(() => execSync(`git clone ${repo}`, { stdio: 'inherit' }));
     }
 
     return;
@@ -83,7 +84,7 @@ export const init = async () => {
     const { allReposToClone } = await getStarredRepos({ token: githubToken, wayToClone });
 
     for (const repo of allReposToClone) {
-      execSync(`git clone ${repo}`, { stdio: 'inherit' });
+      tryCatch(() => execSync(`git clone ${repo}`, { stdio: 'inherit' }));
     }
 
     return;
@@ -92,7 +93,7 @@ export const init = async () => {
   const { allReposToClone } = await getOrgsRepos({ orgs, token: githubToken, wayToClone });
 
   for (const repo of allReposToClone) {
-    execSync(`git clone ${repo}`, { stdio: 'inherit' });
+    tryCatch(() => execSync(`git clone ${repo}`, { stdio: 'inherit' }));
   }
 };
 
