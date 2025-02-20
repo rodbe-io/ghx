@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/rodbe-io/ghx/compare/v1.8.0...v1.8.1) (2025-02-20)
+
+
+### Bug Fixes
+
+* catch the error and continue with the next clone ([fe3f1b5](https://github.com/rodbe-io/ghx/commit/fe3f1b502f8ffd12e9d2b155f91465d4f74597e1))
+
 ## [1.8.0](https://github.com/rodbe-io/ghx/compare/v1.7.0...v1.8.0) (2025-02-18)
 
 
