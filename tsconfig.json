@@ -9,8 +9,8 @@
     "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": true,
 
-		"allowJs": true,
-		"esModuleInterop": true,
+    "allowJs": true,
+    "esModuleInterop": true,
     "outDir": "dist",
     "noEmit": true,
     "isolatedModules": true,
@@ -23,7 +23,7 @@
     "noUnusedParameters": true,
     "strict": true,
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src", "commitlint.config.ts", ".nano-staged.js", "vitest.config.ts", "release.config.js"],
