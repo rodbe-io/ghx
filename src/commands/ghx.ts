@@ -48,7 +48,10 @@ export const init = async () => {
     message: 'How do you want to clone the repos?',
   });
 
-  const orgs = await getOrgs({ mapper: org => ({ name: org.login, value: org.login }), token: githubToken });
+  const orgs = await getOrgs({
+    mapper: (org) => ({ name: org.login, value: org.login }),
+    token: githubToken,
+  });
 
   if (!orgs.length) {
     const { allReposToClone } = await getUserRepos({ token: githubToken, wayToClone });

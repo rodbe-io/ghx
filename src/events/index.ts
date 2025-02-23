@@ -12,7 +12,7 @@ export const initEvents = () => {
     }
   });
 
-  process.on('uncaughtException', error => {
+  process.on('uncaughtException', (error) => {
     if (error instanceof Error && error.name === 'ExitPromptError') {
       console.log('👋 until next time!');
     } else {

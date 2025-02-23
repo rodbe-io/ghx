@@ -18,22 +18,34 @@ export default tsEslint.config(
     ignores: ['**/package-lock.json', '**/package.json'],
     language: 'json/json',
     ...json.configs.recommended,
+    rules: {
+      ...json.configs.recommended.rules,
+      'json/sort-keys': 'error',
+    },
   },
   {
     files: ['**/*.jsonc'],
     language: 'json/jsonc',
     ...json.configs.recommended,
+    rules: {
+      ...json.configs.recommended.rules,
+      'json/sort-keys': 'error',
+    },
   },
   {
     files: ['**/*.json5'],
     language: 'json/json5',
     ...json.configs.recommended,
+    rules: {
+      ...json.configs.recommended.rules,
+      'json/sort-keys': 'error',
+    },
   },
   {
     extends: [
+      js.configs.recommended,
       tsEslint.configs.strictTypeChecked,
       tsEslint.configs.stylisticTypeChecked,
-      js.configs.recommended,
     ],
     files: ['**/*.js', '**/*.ts'],
     languageOptions: {
