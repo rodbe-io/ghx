@@ -11,7 +11,7 @@ interface GetUserReposProps {
 
 export const getUserRepos = async ({ token, wayToClone }: GetUserReposProps) => {
   const userRepos = await getReposByUser({
-    mapper: repo => ({
+    mapper: (repo) => ({
       name: repo.name,
       value: wayToClone === 'SSH' ? repo.ssh_url : repo.clone_url,
     }),

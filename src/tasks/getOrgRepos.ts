@@ -40,7 +40,7 @@ export const getOrgsRepos = async ({ orgs, token, wayToClone }: GetOrgsReposProp
 
   for (const org of selectedOrgs) {
     const repos = await getReposByOrg({
-      mapper: repo => ({
+      mapper: (repo) => ({
         name: repo.name,
         value: wayToClone === 'SSH' ? repo.ssh_url : repo.clone_url,
       }),

@@ -30,7 +30,8 @@ export default {
         preset: 'conventionalcommits',
         presetConfig: {
           changelogHeader: '#RBX_PROJECT_NAME',
-          compareUrlFormat: '{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}',
+          compareUrlFormat:
+            '{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}',
           issuePrefixes: ['#'],
           issueUrlFormat: '{{host}}/{{owner}}/{{repository}}/bug/{{id}}',
         },

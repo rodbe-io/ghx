@@ -34,6 +34,7 @@
     "build": "pkgroll",
     "commit": "git-cz",
     "commitlint": "commitlint --edit",
+    "eslint:fix": "eslint --fix",
     "prepare": "husky || true",
     "release": "semantic-release",
     "start": "pkgroll --watch",
