@@ -42,6 +42,7 @@ export default {
       '@semantic-release/npm',
       {
         npmPublish: true,
+        provenance: true,
       },
     ],
     [
