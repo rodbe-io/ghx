@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -8,3 +9,11 @@ export const getDistPath = () => {
 };
 
 export const getPkgJsonPath = () => join(getDistPath(), '..', '..', 'package.json');
+
+interface PackageJson {
+  version: string;
+}
+
+export const getGhxPkgJson = () => {
+  return JSON.parse(readFileSync(getPkgJsonPath(), 'utf8')) as PackageJson;
+};

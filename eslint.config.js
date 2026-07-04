@@ -3,15 +3,16 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import js from '@eslint/js';
+import { defineConfig } from 'eslint/config';
 import json from '@eslint/json';
 import tsEslint from 'typescript-eslint';
 import prettier from 'eslint-plugin-prettier/recommended';
-import packageJson from 'eslint-plugin-package-json/configs/recommended';
+import packageJson from 'eslint-plugin-package-json';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // eslint-disable-next-line no-restricted-exports
-export default tsEslint.config(
+export default defineConfig(
   { ignores: ['**/dist/', '**/docs/', '**/coverage/', '**/*.d.ts', 'node_modules'] },
   {
     files: ['**/*.json'],
@@ -132,6 +133,6 @@ export default tsEslint.config(
       'spaced-comment': 'error',
     },
   },
-  packageJson,
+  packageJson.configs.recommended,
   prettier
 );
