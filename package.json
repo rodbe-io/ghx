@@ -1,6 +1,6 @@
 {
   "name": "@rodbe/ghx",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Clone GitHub repositories with a friendly CLI",
   "keywords": [
     "front-end",

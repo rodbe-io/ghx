@@ -1,3 +1,15 @@
+## 1.9.0 (2026-07-04)
+
+* feat: support for host alias + config token inline and file config ([e5da386](https://github.com/rodbe-io/ghx/commit/e5da386))
+* chore: add eslint script + run eslint fix ([da7983f](https://github.com/rodbe-io/ghx/commit/da7983f))
+* chore: bump deps ([7eb7883](https://github.com/rodbe-io/ghx/commit/7eb7883))
+* chore: get tsconfig from pkg + fix eslint config ([d70fd55](https://github.com/rodbe-io/ghx/commit/d70fd55))
+* chore: run pn update ([e0eab5b](https://github.com/rodbe-io/ghx/commit/e0eab5b))
+* chore: support oidc releases ([0fe2396](https://github.com/rodbe-io/ghx/commit/0fe2396))
+* chore: update deps ([b790229](https://github.com/rodbe-io/ghx/commit/b790229))
+* ci: use template workflow ([9b47170](https://github.com/rodbe-io/ghx/commit/9b47170))
+* refactor: eslint + prettier config ([586cba7](https://github.com/rodbe-io/ghx/commit/586cba7))
+
 ## [1.8.1](https://github.com/rodbe-io/ghx/compare/v1.8.0...v1.8.1) (2025-02-20)
 
 
